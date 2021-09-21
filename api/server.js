@@ -5,16 +5,15 @@ const path = require("path");
 const imagesRouter = require("./routes/imageRouter");
 
 const server = express();
+server.use(express.static(path.join(__dirname, "../client/build")));
 server.use(express.json());
 server.use(helmet());
 server.use(cors());
 
-server.use("/api/images", imagesRouter);
 server.get("/api", (req, res) => {
-  res.json({
-    message: "Up and running!",
-  });
+  res.end("API up and running.");
 });
+server.use("/api/images", imagesRouter);
 server.use("*", (_, res) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });

@@ -3,7 +3,6 @@ import axios from "axios";
 import "./App.css";
 
 async function postImage({ image, description }) {
-  console.log(image);
   const formData = new FormData();
   for (const keys in image) {
     formData.append("image", image[keys]);
@@ -21,7 +20,7 @@ async function postImage({ image, description }) {
 
 function App() {
   const [file, setFile] = useState();
-  const [previewImage, setPreviewImage] = useState([]);
+  // const [previewImage, setPreviewImage] = useState([]);
   const [description, setDescription] = useState("");
   const [images, setImages] = useState([]);
 
