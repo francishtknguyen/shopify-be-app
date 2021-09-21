@@ -27,6 +27,7 @@ function App() {
   const submit = async (event) => {
     event.preventDefault();
     const result = await postImage({ image: file, description });
+    console.log(result);
     setImages([result.image, ...images]);
   };
 

@@ -9,6 +9,11 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
 router.get("/", (req, res) => {
+  // Get all images
+  res.end("image route");
+});
+router.get("/:username", (req, res) => {
+  // Get all images
   res.end("image route");
 });
 
@@ -22,13 +27,14 @@ router.get("/:key", (req, res) => {
 router.post("/", upload.array("image", 10), async (req, res) => {
   const files = await req.files;
   console.log(files);
+  const complete = [];
   files.forEach(async (file) => {
     const result = await uploadFile(file);
-    console.log(result);
+    complete.push(result);
     await unlinkFile(file.path);
+    // Add to db
   });
-  // const description = req.body.description;
-  // res.send({ imagePath: `/images/${result.Key}` });
+  res.send(complete);
 });
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const knex = require("knex");
 const pg = require("pg");
 
-const { development, production, environment } = require("./index");
+const { development, production, environment } = require("./config/index");
 
 if (production.db) {
   pg.defaults.ssl = { rejectUnauthorized: false };
