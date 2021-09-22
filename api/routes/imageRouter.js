@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
   res.end("image route");
 });
 router.get("/:username", (req, res) => {
-  // Get all images
+  // Get all user images
   res.end("image route");
 });
 
